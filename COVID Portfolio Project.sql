@@ -1,6 +1,6 @@
---select * from ProjectPortfolioOne..CovidDeaths order by 3,4
+--select * from ProjectPortfolioOne..CovidDeaths
 
---select * from ProjectPortfolioOne..CovidVaccinations order by 3,4
+--select * from ProjectPortfolioOne..CovidVaccinations order
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ Select *, (RollingPeopleVaccinated/Population) as VaccinationPercentage
 from #PercentPopulationVaccinated 
 order by 2,3
 
--- Creating a View to store date for later Visualization
+-- Creating a View to store data for later Visualization
 Create View PercentPopulationVaccinated as
 Select dea.continent,dea.location,dea.date,dea.population,vac.new_vaccinations,
 SUM(Convert(bigint,vac.new_vaccinations)) OVER (Partition by dea.location Order by dea.location,dea.date) as RollingPeopleVaccinated
